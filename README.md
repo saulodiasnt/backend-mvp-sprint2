@@ -69,7 +69,7 @@ cd backend
 3. Crie a imagem docker para o backend
 
 ```bash
-docker build -t backend-pucflix
+docker build -t backend-pucflix .
 ```
 
 4. Navegue até a pasta do frontend:
