@@ -141,7 +141,7 @@ npm install
 
 ```plaintext
 VITE_API_URL=http://localhost:5000 # URL do backend da aplicação
-YOUR_API_KEY= # Chave da API do TMDB
+VITE_TMDB_API_KEY= # Chave da API do TMDB
 ```
 
 5. Execute o projeto:
