@@ -18,7 +18,7 @@ security_schemes = {"jwt": jwt}
 app = OpenAPI(__name__, security_schemes=security_schemes)
 app.config["OPENAPI_VERSION"] = "3.0.2"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
-app.config["JWT_SECRET_KEY"]="super-secret"
+app.config["JWT_SECRET_KEY"] = "super-secret"
 CORS(app)
 db.init_app(app)
 
@@ -31,4 +31,3 @@ app.register_api(auth_bp)
 app.register_api(favorite_movie_bp)
 
 from app import models
-

@@ -10,6 +10,7 @@ auth_bp = APIBlueprint("auth", __name__, abp_tags=[auth_tag])
 
 CORS(auth_bp)
 
+
 @auth_bp.post(
     "/login",
     summary="Authenticates a user by checking the provided email and password.",

@@ -21,7 +21,7 @@ def configure_cors(app):
 def auth_check_middleware(app):
     @app.before_request
     def auth_check_middleware():
-        
+
         if not any(request.path.startswith(route) for route in EXCLUDE_ROUTES):
             token = request.headers.get("Authorization")
             if not token and request.method == "OPTIONS":

@@ -20,7 +20,7 @@ class FavoriteMovieService:
         backdrop_path: str,
         poster_path: str,
         user_id: int,
-        media_type: str
+        media_type: str,
     ):
         favorite_movie = FavoriteMovie(
             title=title,
@@ -28,8 +28,7 @@ class FavoriteMovieService:
             user_id=user_id,
             backdrop_path=backdrop_path,
             poster_path=poster_path,
-            media_type=media_type
-
+            media_type=media_type,
         )
 
         db.session.add(favorite_movie)
@@ -38,7 +37,9 @@ class FavoriteMovieService:
 
     @staticmethod
     def delete_user_favorite_movie(favorite_movie_id: int, user_id: int):
-        favorite_movie = FavoriteMovie.query.filter_by(id=favorite_movie_id, user_id=user_id).first()
+        favorite_movie = FavoriteMovie.query.filter_by(
+            id=favorite_movie_id, user_id=user_id
+        ).first()
         if not favorite_movie:
             return NotFoundException().to_dict()
         db.session.delete(favorite_movie)

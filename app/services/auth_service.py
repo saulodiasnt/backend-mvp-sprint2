@@ -6,11 +6,10 @@ from app.database import db
 from app.shared.erros import UnauthorizedException
 
 
-
 class AuthService:
     @staticmethod
     def login(email: str, password: str):
-        
+
         user = User.query.filter_by(email=email).first()
 
         if user is None or not user.check_password(password):

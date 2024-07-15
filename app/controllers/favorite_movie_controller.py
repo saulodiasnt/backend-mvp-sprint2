@@ -2,9 +2,9 @@ from flask import g
 from flask_openapi3 import APIBlueprint, Tag
 from app.services.favorite_movie_service import FavoriteMovieService
 from app.schemas import (
-CreateUserFavoriteSchema,
-FavoriteMovieResponseSchema,
-FavoriteMoviePathSchema
+    CreateUserFavoriteSchema,
+    FavoriteMovieResponseSchema,
+    FavoriteMoviePathSchema,
 )
 from app.shared.erros import NotFoundException, UnauthorizedException
 from flask import jsonify
@@ -22,7 +22,9 @@ favorite_movie_bp = APIBlueprint(
 )
 
 
-@favorite_movie_bp.post("/", tags=[favorite_movie_tag], responses={201: FavoriteMovieResponseSchema})
+@favorite_movie_bp.post(
+    "/", tags=[favorite_movie_tag], responses={201: FavoriteMovieResponseSchema}
+)
 def create_favorite_movie(body: CreateUserFavoriteSchema):
     user_id = g.get("current_user").id
     print(user_id)
@@ -43,15 +45,22 @@ def create_favorite_movie(body: CreateUserFavoriteSchema):
 def list_favorite_movie():
     user_id = g.get("current_user").id
     favorite_movies = FavoriteMovieService.get_all_user_favorite_movies(user_id)
-    return jsonify([favorite_movie.to_dict() for favorite_movie in favorite_movies]), 200
+    return (
+        jsonify([favorite_movie.to_dict() for favorite_movie in favorite_movies]),
+        200,
+    )
 
 
-@favorite_movie_bp.get("/<int:favorite_movie_id>", responses={200: FavoriteMovieResponseSchema})
+@favorite_movie_bp.get(
+    "/<int:favorite_movie_id>", responses={200: FavoriteMovieResponseSchema}
+)
 def get_favorite_movie(path: FavoriteMoviePathSchema):
     user_id = g.get("current_user").id
     favorite_movie_id = path.favorite_movie_id
 
-    favorite_movie = FavoriteMovieService.get_user_favorite_movie_by_id(favorite_movie_id, user_id)
+    favorite_movie = FavoriteMovieService.get_user_favorite_movie_by_id(
+        favorite_movie_id, user_id
+    )
     if not favorite_movie:
         return jsonify(error="Favorite Movie not found"), 404
 

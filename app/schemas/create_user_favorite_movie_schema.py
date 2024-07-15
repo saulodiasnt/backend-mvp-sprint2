@@ -8,6 +8,3 @@ class CreateUserFavoriteSchema(BaseModel):
     poster_path: Optional[str] = Field(None, examples="/path")
     media_type: Optional[str] = Field(None, examples="movie")
     tmdb_id: int = Field(None, examples=1)
-
-    
-    
