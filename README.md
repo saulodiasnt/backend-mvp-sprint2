@@ -152,6 +152,8 @@ npm run dev
 
 A aplicação principal ficará disponível no endereço: http://localhost:8080.
 
+> **Observação**: Ao alterar quaisquer variáveis de ambiente, é necessário re-buildar a aplicação utilizando o comando `docker-compose build` para forçar a recriação da imagem, e em seguida `docker-compose up -d` para iniciar a aplicação.
+
 #### Backend
 
 1. Clone o repositório:
