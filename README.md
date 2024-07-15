@@ -89,10 +89,12 @@ services:
     ports:
       - "5000:5000"
   frontend:
-    build: .
-    environment:
-      - VITE_API_URL=http://backend:5000/
-      - VITE_TMDB_API_KEY=*SUA_API_KEY* # Deverá ser informada aqui a sua API KEY do TMDB
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:5000/ # URL do backend da aplicação
+        - VITE_TMDB_API_KEY= # Chave da API do TMDB
     ports:
       - "8080:80"
     depends_on:
