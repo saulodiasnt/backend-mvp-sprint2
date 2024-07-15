@@ -109,6 +109,8 @@ A aplicação principal ficará disponível no endereço: http://localhost:8080.
 
 A aplicação REST secundária ficará disponível no endereço: http://localhost:5000.
 
+> **Observação**: Ao alterar quaisquer variáveis de ambiente, é necessário re-buildar a aplicação utilizando o comando `docker-compose build` para forçar a recriação da imagem, e em seguida `docker-compose up -d` para iniciar a aplicação.
+
 ### Executar aplicação sem Docker
 
 #### Pré-requisitos
@@ -151,8 +153,6 @@ npm run dev
 ```
 
 A aplicação principal ficará disponível no endereço: http://localhost:8080.
-
-> **Observação**: Ao alterar quaisquer variáveis de ambiente, é necessário re-buildar a aplicação utilizando o comando `docker-compose build` para forçar a recriação da imagem, e em seguida `docker-compose up -d` para iniciar a aplicação.
 
 #### Backend
 
